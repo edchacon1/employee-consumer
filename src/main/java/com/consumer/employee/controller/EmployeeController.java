@@ -24,8 +24,7 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("/employee")
-public class EmployeeController
-{
+public class EmployeeController {
    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
    private EmployeeService employeeService;
 
@@ -39,8 +38,8 @@ public class EmployeeController
     * @return - ResponseEntity<Employee> - Employee and http status.
     */
    @GetMapping("/{employeeId}")
-   public ResponseEntity<Employee>  getEmployeeById(@PathVariable("employeeId") int employeeId){
-      try{
+   public ResponseEntity<Employee>  getEmployeeById(@PathVariable("employeeId") int employeeId) {
+      try {
          return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
       } catch (EmployeeConsumerException consumerException) {
          LOG.error(consumerException.getMessage());
@@ -53,8 +52,8 @@ public class EmployeeController
     * @return - ResponseEntity<List<Employee>> - Employees and http status.
     */
    @GetMapping
-   public ResponseEntity<List<Employee>>  getEmployees(){
-      try{
+   public ResponseEntity<List<Employee>>  getEmployees() {
+      try {
          return ResponseEntity.ok(employeeService.getEmployees());
       } catch (EmployeeConsumerException consumerException) {
       LOG.error(consumerException.getMessage());

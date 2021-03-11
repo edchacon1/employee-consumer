@@ -4,113 +4,97 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * POJO  for employees.
- * @author  Dario Chacon
+ *
+ * @author Dario Chacon
  * @version 1.0
- * @since   2021-03-10
+ * @since 2021-03-10
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class Employee
-{
-   private Integer id;
-   private String name;
-   private String contractTypeName;
-   private Integer roleId;
-   private String roleName;
-   private String roleDescription;
-   private Double annualSalary;
-   private Double hourlySalary;
-   private Double monthlySalary;
+public abstract class Employee {
+    private Integer id;
+    private String name;
+    private String contractTypeName;
+    private Integer roleId;
+    private String roleName;
+    private String roleDescription;
+    private Double annualSalary;
+    private Double hourlySalary;
+    private Double monthlySalary;
 
-   public Employee()
-   {
-   }
+    public Employee() {
+    }
 
-   public Double getMonthlySalary()
-   {
-      return monthlySalary;
-   }
+    public Double getMonthlySalary() {
+        return monthlySalary;
+    }
 
-   public void setMonthlySalary(Double monthlySalary)
-   {
-      this.monthlySalary = monthlySalary;
-   }
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
 
-   public Double getHourlySalary()
-   {
-      return hourlySalary;
-   }
+    public Double getHourlySalary() {
+        return hourlySalary;
+    }
 
-   public void setHourlySalary(Double hourlySalary)
-   {
-      this.hourlySalary = hourlySalary;
-   }
+    public void setHourlySalary(Double hourlySalary) {
+        this.hourlySalary = hourlySalary;
+    }
 
-   public Integer getId()
-   {
-      return id;
-   }
+    public Integer getId() {
+        return id;
+    }
 
-   public void setId(Integer id)
-   {
-      this.id = id;
-   }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-   public String getName()
-   {
-      return name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   public String getContractTypeName()
-   {
-      return contractTypeName;
-   }
+    public String getContractTypeName() {
+        return contractTypeName;
+    }
 
-   public void setContractTypeName(String contractTypeName)
-   {
-      this.contractTypeName = contractTypeName;
-   }
+    public void setContractTypeName(String contractTypeName) {
+        this.contractTypeName = contractTypeName;
+    }
 
-   public Integer getRoleId()
-   {
-      return roleId;
-   }
+    public Integer getRoleId() {
+        return roleId;
+    }
 
-   public void setRoleId(Integer roleId)
-   {
-      this.roleId = roleId;
-   }
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
 
-   public String getRoleName()
-   {
-      return roleName;
-   }
+    public String getRoleName() {
+        return roleName;
+    }
 
-   public void setRoleName(String roleName)
-   {
-      this.roleName = roleName;
-   }
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
-   public String getRoleDescription()
-   {
-      return roleDescription;
-   }
+    public String getRoleDescription() {
+        return roleDescription;
+    }
 
-   public void setRoleDescription(String roleDescription)
-   {
-      this.roleDescription = roleDescription;
-   }
+    public void setRoleDescription(String roleDescription) {
+        this.roleDescription = roleDescription;
+    }
 
-   public Double getAnnualSalary(){
-      return annualSalary;
-   };
+    public Double getAnnualSalary() {
+        return annualSalary;
+    }
 
-   public void setAnnualSalary(Double salary)
-   {
-      this.annualSalary = salary;
-   }
+    ;
+
+    public void setAnnualSalary(Double salary) {
+        this.annualSalary = salary;
+    }
 }

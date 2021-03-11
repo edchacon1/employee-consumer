@@ -12,31 +12,31 @@ import java.util.List;
 
 /**
  * MAS Global client  to provide rest API  employees information.
- * @author  Dario Chacon
+ *
+ * @author Dario Chacon
  * @version 1.0
- * @since   2021-03-10
+ * @since 2021-03-10
  */
 @Service
-public class MasGlobalClient
-{
-   private final String EMPLOYEES_PATH = "API/employees";
-   private final String DOMAIN_PATH = "http://masglobaltestapi.azurewebsites.net/";
-   private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+public class MasGlobalClient {
+    private final String EMPLOYEES_PATH = "API/employees";
+    private final String DOMAIN_PATH = "http://masglobaltestapi.azurewebsites.net/";
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-   /**
-    * Gets Employees
-    * @return - List<EmployeeDTO> - All Employees.
-    */
-   public List<EmployeeDTO> getEmployees() throws EmployeeConsumerException
-   {
-      try {
-         RestTemplate restTemplate = new RestTemplate();
-          return Arrays.asList( restTemplate.getForObject(
-                DOMAIN_PATH + EMPLOYEES_PATH,
-               EmployeeDTO[].class));
-      } catch (Exception e) {
-         LOG.error("Failed to get Employees", e);
-         throw new EmployeeConsumerException(e.getMessage());
-      }
-   }
+    /**
+     * Gets Employees
+     *
+     * @return - List<EmployeeDTO> - All Employees.
+     */
+    public List<EmployeeDTO> getEmployees() throws EmployeeConsumerException {
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            return Arrays.asList(restTemplate.getForObject(
+                    DOMAIN_PATH + EMPLOYEES_PATH,
+                    EmployeeDTO[].class));
+        } catch (Exception e) {
+            LOG.error("Failed to get Employees", e);
+            throw new EmployeeConsumerException(e.getMessage());
+        }
+    }
 }
