@@ -12,4 +12,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MonthlyEmployee extends Employee {
 
+    public Double getAnnualSalary() {
+        return  getMonthlySalary() * 12;
+    }
+
 }

@@ -2,7 +2,7 @@ package com.consumer.employee.service;
 
 import com.consumer.employee.client.MasGlobalClient;
 import com.consumer.employee.dto.EmployeeDTO;
-import com.consumer.employee.exception.EmployeeConsumerException;
+import com.consumer.employee.exception.FetchEmployeeException;
 import com.consumer.employee.model.Employee;
 import com.consumer.employee.model.HourlyEmployee;
 import com.consumer.employee.model.MonthlyEmployee;
@@ -47,7 +47,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById success")
-   void getEmployeeById() throws EmployeeConsumerException {
+   void getEmployeeById() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -57,7 +57,7 @@ class EmployeeServiceTest
    }
    @Test
    @DisplayName("Test getEmployeeById validate HourlySalaryEmployee")
-   void getHourlyEmployeeById() throws EmployeeConsumerException {
+   void getHourlyEmployeeById() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -69,7 +69,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById validate MonthlySalaryEmployee")
-   void getMonthlyEmployeeById() throws EmployeeConsumerException {
+   void getMonthlyEmployeeById() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -81,7 +81,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById no result case")
-   void getEmployeeByIdNoResult() throws EmployeeConsumerException {
+   void getEmployeeByIdNoResult() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -92,7 +92,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById empty list")
-   void getEmployeeByIdEmptyList() throws EmployeeConsumerException {
+   void getEmployeeByIdEmptyList() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(new ArrayList<EmployeeDTO>()).when(masGlobalClient).getEmployees();
       //Call service method
@@ -103,19 +103,19 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById exception case")
-   void getEmployeeWithException() throws EmployeeConsumerException {
+   void getEmployeeWithException() throws FetchEmployeeException {
       //Mock client
       Mockito.when(masGlobalClient.getEmployees())
-            .thenThrow(EmployeeConsumerException.class);
+            .thenThrow(FetchEmployeeException.class);
       //Call service method
-      Assertions.assertThrows(EmployeeConsumerException.class, () -> {
+      Assertions.assertThrows(FetchEmployeeException.class, () -> {
          employeeService.getEmployeeById(1);
       });
    }
 
    @Test
    @DisplayName("Test getEmployees success")
-   void getEmployees() throws EmployeeConsumerException {
+   void getEmployees() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -126,7 +126,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployees validate monthly and hourly employees")
-   void getMonthlyAndHourlyEmployees() throws EmployeeConsumerException {
+   void getMonthlyAndHourlyEmployees() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(employees).when(masGlobalClient).getEmployees();
       //Call service method
@@ -143,7 +143,7 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployeeById empty list")
-   void getEmployeesEmptyList() throws EmployeeConsumerException {
+   void getEmployeesEmptyList() throws FetchEmployeeException {
       //Mock client
       Mockito.doReturn(new ArrayList<EmployeeDTO>()).when(masGlobalClient).getEmployees();
       //Call service method
@@ -154,12 +154,12 @@ class EmployeeServiceTest
 
    @Test
    @DisplayName("Test getEmployees exception case")
-   void getEmployeesWithException() throws EmployeeConsumerException {
+   void getEmployeesWithException() throws FetchEmployeeException {
       //Mock client
       Mockito.when(masGlobalClient.getEmployees())
-            .thenThrow(EmployeeConsumerException.class);
+            .thenThrow(FetchEmployeeException.class);
       //Call service method
-      Assertions.assertThrows(EmployeeConsumerException.class, () -> {
+      Assertions.assertThrows(FetchEmployeeException.class, () -> {
          employeeService.getEmployees();
       });
    }

@@ -1,7 +1,7 @@
 package com.consumer.employee.client;
 
 import com.consumer.employee.dto.EmployeeDTO;
-import com.consumer.employee.exception.EmployeeConsumerException;
+import com.consumer.employee.exception.FetchEmployeeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class MasGlobalClient {
      *
      * @return - List<EmployeeDTO> - All Employees.
      */
-    public List<EmployeeDTO> getEmployees() throws EmployeeConsumerException {
+    public List<EmployeeDTO> getEmployees() throws FetchEmployeeException {
         try {
             RestTemplate restTemplate = new RestTemplate();
             return Arrays.asList(restTemplate.getForObject(
@@ -36,7 +36,7 @@ public class MasGlobalClient {
                     EmployeeDTO[].class));
         } catch (Exception e) {
             LOG.error("Failed to get Employees", e);
-            throw new EmployeeConsumerException(e.getMessage());
+            throw new FetchEmployeeException(e.getMessage());
         }
     }
 }

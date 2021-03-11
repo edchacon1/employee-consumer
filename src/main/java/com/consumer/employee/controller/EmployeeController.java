@@ -1,13 +1,10 @@
 package com.consumer.employee.controller;
 
-import com.consumer.employee.dto.EmployeeDTO;
-import com.consumer.employee.exception.EmployeeConsumerException;
 import com.consumer.employee.model.Employee;
 import com.consumer.employee.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,12 +36,7 @@ public class EmployeeController {
     */
    @GetMapping("/{employeeId}")
    public ResponseEntity<Employee>  getEmployeeById(@PathVariable("employeeId") int employeeId) {
-      try {
          return ResponseEntity.ok(employeeService.getEmployeeById(employeeId));
-      } catch (EmployeeConsumerException consumerException) {
-         LOG.error(consumerException.getMessage());
-         return new ResponseEntity("Error getting employees.", HttpStatus.BAD_REQUEST);
-      }
    }
 
    /**
@@ -53,11 +45,6 @@ public class EmployeeController {
     */
    @GetMapping
    public ResponseEntity<List<Employee>>  getEmployees() {
-      try {
          return ResponseEntity.ok(employeeService.getEmployees());
-      } catch (EmployeeConsumerException consumerException) {
-      LOG.error(consumerException.getMessage());
-      return new ResponseEntity("Error getting employees.", HttpStatus.BAD_REQUEST);
-      }
    }
 }

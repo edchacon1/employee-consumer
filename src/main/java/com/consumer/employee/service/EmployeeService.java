@@ -2,7 +2,7 @@ package com.consumer.employee.service;
 
 import com.consumer.employee.client.MasGlobalClient;
 import com.consumer.employee.dto.EmployeeDTO;
-import com.consumer.employee.exception.EmployeeConsumerException;
+import com.consumer.employee.exception.FetchEmployeeException;
 import com.consumer.employee.model.Employee;
 import com.consumer.employee.model.HourlyEmployee;
 import com.consumer.employee.model.MonthlyEmployee;
@@ -33,7 +33,7 @@ public class EmployeeService {
      *
      * @return - List<Employee> - All Employees.
      */
-    public List<Employee> getEmployees() throws EmployeeConsumerException {
+    public List<Employee> getEmployees() throws FetchEmployeeException {
         List<Employee> employeesResultList = new ArrayList<>();
         List<EmployeeDTO> employeeDTOS = masGlobalClient.getEmployees();
         LOG.info("Array : !!!!! : " + employeeDTOS.toString());
@@ -49,7 +49,7 @@ public class EmployeeService {
      * @param -employeeId- Employee id.
      * @return - Employee - Employee.
      */
-    public Employee getEmployeeById(Integer employeeId) throws EmployeeConsumerException {
+    public Employee getEmployeeById(Integer employeeId) throws FetchEmployeeException {
         EmployeeDTO employeeDTO = masGlobalClient.getEmployees().stream().
                 filter(empl -> empl.getId() == employeeId).findFirst().orElse(null);
         return employeeFactory(employeeDTO);
@@ -66,10 +66,8 @@ public class EmployeeService {
         if (employeeDTO != null) {
             if (employeeDTO.getContractTypeName() != null && "monthlySalary".equals(employeeDTO.getContractTypeName())) {
                 employee = new MonthlyEmployee();
-                employee.setAnnualSalary(employeeDTO.getMonthlySalary() * 12);
             } else {
                 employee = new HourlyEmployee();
-                employee.setAnnualSalary(120 * employeeDTO.getHourlySalary() * 12);
             }
             employee.setHourlySalary(employeeDTO.getHourlySalary());
             employee.setMonthlySalary(employeeDTO.getMonthlySalary());

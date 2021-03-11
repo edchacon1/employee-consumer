@@ -88,13 +88,6 @@ public abstract class Employee {
         this.roleDescription = roleDescription;
     }
 
-    public Double getAnnualSalary() {
-        return annualSalary;
-    }
+    public abstract Double getAnnualSalary();
 
-    ;
-
-    public void setAnnualSalary(Double salary) {
-        this.annualSalary = salary;
-    }
 }
