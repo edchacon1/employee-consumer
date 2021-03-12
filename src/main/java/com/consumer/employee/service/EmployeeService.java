@@ -25,11 +25,14 @@ import java.util.List;
 public class EmployeeService {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private MasGlobalClient masGlobalClient;
 
+    @Autowired
+    public void EmployeeService(MasGlobalClient masGlobalClient) {
+        this.masGlobalClient = masGlobalClient;
+    }
     /**
-     * Gets Employees.
+     * Get Employees.
      *
      * @return - List<Employee> - All Employees.
      */
@@ -46,8 +49,8 @@ public class EmployeeService {
     /**
      * Get Employee by id.
      *
-     * @param -employeeId- Employee id.
-     * @return - Employee - Employee.
+     * @param employeeId Employee id.
+     * @return Employee.
      */
     public Employee getEmployeeById(Integer employeeId) throws FetchEmployeeException {
         EmployeeDTO employeeDTO = masGlobalClient.getEmployees().stream().
@@ -58,8 +61,8 @@ public class EmployeeService {
     /**
      * Get Employee from employeeDTO by contract type.
      *
-     * @param -EmployeeDTO- Employee id.
-     * @return - Employee - Employee.
+     * @param employeeDTO Employee id.
+     * @return Employee.
      */
     private Employee employeeFactory(EmployeeDTO employeeDTO) {
         Employee employee = null;

@@ -2,11 +2,8 @@ package com.consumer.employee.controller;
 
 import com.consumer.employee.model.Employee;
 import com.consumer.employee.service.EmployeeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,10 +16,11 @@ import java.util.List;
  * @since   2021-03-10
  */
 @RestController
+//TODO config Cross mapping
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RequestMapping("/employee")
 public class EmployeeController {
-   private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
    private EmployeeService employeeService;
 
    @Autowired
@@ -31,8 +29,8 @@ public class EmployeeController {
    }
    /**
     * Get Employee by id.
-    * @param  -employeeId- Employee id.
-    * @return - ResponseEntity<Employee> - Employee and http status.
+    * @param  employeeId Employee id.
+    * @return ResponseEntity<Employee>  Employee and http status.
     */
    @GetMapping("/{employeeId}")
    public ResponseEntity<Employee>  getEmployeeById(@PathVariable("employeeId") int employeeId) {
@@ -41,7 +39,7 @@ public class EmployeeController {
 
    /**
     * Get Employee by id.
-    * @return - ResponseEntity<List<Employee>> - Employees and http status.
+    * @return ResponseEntity<List<Employee>> Employees and http status.
     */
    @GetMapping
    public ResponseEntity<List<Employee>>  getEmployees() {
